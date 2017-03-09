@@ -28,7 +28,7 @@ describe('AddTodo', () => {
     expect(spy).toHaveBeenCalledWith(action);
   });
 
-  it('should not dispatch ADD_TODOwhen invalid todo text', () => {
+  it('should not dispatch ADD_TODO when invalid todo text', () => {
     var todoText = '';
     var spy = expect.createSpy();
     var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>);
