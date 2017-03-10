@@ -1,13 +1,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
-
-var TodoApp = require('TodoApp');
+var {hashHistory} = require('react-router');
 
 var actions = require('actions');
 var store = require('configureStore').configure();
-var TodoAPI = require('TodoAPI');
+import firebase from 'app/firebase/';
+import router from 'app/router/';
+
+firebase.auth().onAuthStateChanged((user) => {
+  hashHistory.push(user ? '/todos' : '/');
+});
 
 // import './../playground/firebase/index';
 
@@ -35,7 +38,7 @@ require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
   <Provider store={store}>
-  	<TodoApp />
+  	{router}
   </Provider>,
   document.getElementById('app')
 );
