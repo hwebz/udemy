@@ -7,10 +7,19 @@ var TodoApp = require('TodoApp');
 
 var actions = require('actions');
 var store = require('configureStore').configure();
+var TodoAPI = require('TodoAPI');
+
+// import './../playground/firebase/index';
 
 store.subscribe(() => {
+	var state = store.getState();
 	console.log('New state', store.getState());
+	// Save to localStorage
+	TodoAPI.setTodos(state.todos);
 });
+
+var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));
 
 // store.dispatch(actions.addTodo('Clean the yard'));
 // store.dispatch(actions.setSearchText('yard'));

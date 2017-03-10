@@ -26,13 +26,7 @@ export var todosReducer = (state = [], action) => {
 		case 'ADD_TODO':
 			return [
 				...state,
-				{
-					id: uuid(),
-					text: action.text,
-					completed: false,
-					createdAt: moment().unix(),
-					completedAt: undefined
-				}
+				action.todo
 			];
 			// add case for TOGGLE_TODO completed equal to opposite value & updateCompletedAt
 		case 'TOGGLE_TODO':
@@ -49,6 +43,11 @@ export var todosReducer = (state = [], action) => {
 					return todo;
 				}
 			});
+		case 'SET_TODOS':
+			return [
+				...state,
+				...action.todos
+			];
 		default:
 			return state;
 	}
