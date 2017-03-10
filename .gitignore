@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 **/node_modules/
 node_modules/
+=======
+node_modules/
+public/bundle.js
+>>>>>>> 81980daa67ab6527094b8d1b3d96edd8e4024a96

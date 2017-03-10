@@ -7,8 +7,7 @@
     "test": "set NODE_ENV=test && karma start",
     "start": "node server.js",
     "production": "set NODE_ENV=production && webpack",
-    "development": "set NODE_ENV=development && webpack",
-    "build": "NODE_ENV=production webpack --progress --colors"
+    "development": "set NODE_ENV=development && webpack"
   },
   "author": "Andrew Mead",
   "license": "MIT",
