@@ -8,7 +8,7 @@ import TodoSearch from 'TodoSearch';
 var TodoAPI = require('TodoAPI');
 
 var TodoApp = React.createClass({
-  getInitialState: function () {
+  /*getInitialState: function () {
     return {
       showCompleted: false,
       searchText: '',
@@ -17,10 +17,10 @@ var TodoApp = React.createClass({
   },
   componentDidUpdate: function () {
     TodoAPI.setTodos(this.state.todos);
-  },
+  },*/
   render: function () {
-    var {todos, showCompleted, searchText} = this.state;
-    var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+/*    var {todos, showCompleted, searchText} = this.state;
+    var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);*/
 
     return (
       <div>

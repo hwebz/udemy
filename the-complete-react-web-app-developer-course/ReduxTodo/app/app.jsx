@@ -11,15 +11,17 @@ var TodoAPI = require('TodoAPI');
 
 // import './../playground/firebase/index';
 
-store.subscribe(() => {
+/*store.subscribe(() => {
 	var state = store.getState();
-	console.log('New state', store.getState());
+	// console.log('New state', store.getState());
 	// Save to localStorage
 	TodoAPI.setTodos(state.todos);
-});
+});*/
 
-var initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
+/*var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));*/
+
+store.dispatch(actions.startAddTodos());
 
 // store.dispatch(actions.addTodo('Clean the yard'));
 // store.dispatch(actions.setSearchText('yard'));
