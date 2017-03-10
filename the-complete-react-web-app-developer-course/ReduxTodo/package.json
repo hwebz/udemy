@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "start": "node server.js",
-    "postinstall": "NODE_ENV=production webpack -p"
+    "postinstall": "NODE_ENV=development webpack -p"
   },
   "author": "Andrew Mead",
   "license": "MIT",
