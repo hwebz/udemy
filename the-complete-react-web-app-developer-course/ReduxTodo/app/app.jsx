@@ -9,7 +9,13 @@ import firebase from 'app/firebase/';
 import router from 'app/router/';
 
 firebase.auth().onAuthStateChanged((user) => {
-  hashHistory.push(user ? '/todos' : '/');
+  if (user) {
+    store.dispatch(actions.login(user.uid));
+    hashHistory.push('/todos');
+  } else {
+    store.dispatch(actions.logout());
+    hashHistory.push('/');
+  }
 });
 
 // import './../playground/firebase/index';
