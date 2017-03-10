@@ -26,7 +26,7 @@ module.exports = {
     filteredTodos = filteredTodos.filter((todo) => {
       return !todo.completed || showCompleted;
     });
-
+    console.log(filteredTodos);
     // Filter by searchText
     filteredTodos = filteredTodos.filter((todo) => {
       var text = todo.text.toLowerCase();
