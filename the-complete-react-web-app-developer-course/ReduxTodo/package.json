@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "start": "node server.js"
+    "start": "node server.js",
+    "production": "set NODE_ENV=production",
+    "development": "set NODE_ENV=development"
   },
   "author": "Andrew Mead",
   "license": "MIT",
