@@ -100,9 +100,10 @@ describe('Reducers', () => {
 		    var action = {
 		      type: 'LOGOUT'
 		    };
-		    var res = reducers.authReducer(df(todos), df(action));
+		    var res = reducers.todosReducer(df(todos), df(action));
 
-		    expect(res).toEqual({});
+		    expect(res.length).toEqual(1);
+		    expect(res[0]).toEqual(todos[0]);
 		  });
 	});
 
