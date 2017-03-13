@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged((user) => {
     hashHistory.push('/todos');
   } else {
     store.dispatch(actions.logout());
+    store.dispatch(actions.removeTodos());
     hashHistory.push('/');
   }
 });

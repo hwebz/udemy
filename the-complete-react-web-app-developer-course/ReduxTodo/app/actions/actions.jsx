@@ -129,3 +129,9 @@ export var startLogout = () => {
     })
   };
 };
+
+export var removeTodos = () => {
+  return (dispatch, getState) => {
+    dispatch(addTodos(parsedTodos));
+  }
+}
