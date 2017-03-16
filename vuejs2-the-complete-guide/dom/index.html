@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <p v-once>{{ title }}</p>
+    <input type="text" v-on:input="changeTitle">
+    <p>{{ title }}</p>
+    <p>{{ sayHello() }}</p>
+    <p>{{ sayHelloWithTitle() }}</p>
+    <p><a v-bind:href="link">Google</a></p>
+    <p v-html="finishedLink"></p>
+    <div class="counter">
+      <p>{{ counter }}</p>
+      <p>{{ counter > 10 ? 'Counter now greater than 10' : 'Counter still less than 10' }}</p>
+      <button v-on:click="increase(2, $event)">Increase</button>
+      <button v-on:click="counter++">Increase</button>
+      <p v-on:mousemove="updateCoordinates">
+        Coordinates: {{ x }} / {{ y }}
+        - <!-- <span v-on:mousemove="dummy">DEAD SPOT</span> -->
+        <span v-on:mousemove.stop="">DEAD SPOT</span>
+      </p>
+    </div>
+    <div class="key-interaction">
+      <input type="text" v-on:keyup="alertMe" />
+      <input type="text" v-on:keyup.enter="alertMe" />
+      <input type="text" v-on:keyup.enter.space="alertMe" />
+    </div>
+    <div class="twoway-binding">
+      <h3>Two-way Binding</h3>
+      <input type="text" v-model="name">
+      <p>{{ name }}</p>
+    </div>
+  </div>
+  <div id="app2" class="computed-properties">
+    <h3>Computed Properties</h3>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Result: {{ result() }} | {{ output }}</p>
+  </div>
+  <div id="app3" class="shorthands">
+    <h3>Shorthands</h3>
+    <button @click="changeLink">Click to change link</button>
+    <a :href="link">Link</a>
+  </div>
+  <div id="app4" class="dynamic-styling">
+    <h3>Dynamic Styling with CSS</h3>
+    <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+    <div class="demo" @click="attachGreen = !attachGreen" :class="{green: attachGreen, blue: !attachGreen}"></div>
+    <div class="demo" @click="attachBlue = !attachBlue" :class="{blue: attachBlue}"></div>
+    <div class="demo" :class="color"></div>
+    <div class="demo" :class="[color, {red: attachRed}]"></div>
+    <hr>
+    <input type="text" v-model="color">
+  </div>
+  <div id="app5" class="without-classes">
+    <h3>Dynamic Styling without CSS classes</h3>
+    <div class="demo" :style="{backgroundColor: color}"></div>
+    <div class="demo" :style="myStyle"></div>
+    <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+    <hr>
+    <input type="text" v-model="color" />
+    <input type="number" v-model="width" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

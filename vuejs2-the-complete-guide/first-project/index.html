@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Monster Slayer</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+        <script src="../vue.js"></script>
+        <link rel="stylesheet" href="style.css" /> 
+    </head>
+    <body>
+        <div id="app">
+        	<section class="row">
+        		<div class="small-6 columns">
+        			<h1 class="text-center">YOU</h1>
+        			<div class="healthbar">
+        				<div 
+        					class="healthbar text-center" 
+        					style="background-color: green; margin: 0;color: white"
+        					:style="{width: playerHealth + '%'}">
+        					{{ playerHealth }}
+        				</div>
+        			</div>
+        		</div>
+        		<div class="small-6 columns">
+        			<h1 class="text-center">MONSTER</h1>
+        			<div class="healthbar">
+        				<div 
+        					class="healthbar text-center" 
+        					style="background-color: green; margin: 0;color: white"
+        					:style="{width: monsterHealth + '%'}">
+        					{{ monsterHealth }}
+        				</div>
+        			</div>
+        		</div>
+        	</section>
+        	<section class="row controls" v-if="!gameIsRunning">
+        		<div class="small-12 columns">
+        			<button id="start-game" @click="startGame">START NEW GAME</button>
+        		</div>
+        	</section>
+        	<section class="row controls" v-else>
+        		<div class="small-12 columns">
+        			<button id="attack" @click="attach">ATTACH</button>
+        			<button id="special-attack" @click="specialAttach">SPECIAL ATTACH</button>
+        			<button id="heal" @click="heal">HEAL</button>
+        			<button id="give-up" @click="stopGame">GIVE UP</button>
+        		</div>
+        	</section>
+        	<section class="row log">
+        		<div class="small-12 columns">
+        			<ul>
+        				<li v-for="turn in turns" :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer, heal: (turn.heal > 0 ? true : false )}">
+        					 {{ turn.heal > 0 ? 'Player heals for ' + turn.heal : (turn.isPlayer ? 'Player hits Monster for ' + turn.damage : 'Monster hits Player for ' + turn.damage)  }}
+        				</li>
+        			</ul>
+        		</div>
+        	</section>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
