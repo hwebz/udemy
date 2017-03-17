@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>VueJS Instance</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <!-- We only do have ONE Vue Instance -->
+        <div class="app"></div>
+        <div class="app"></div>
+
+        <!-- Use my-component multiple times in #app -->
+        <div id="app">
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+
+        <div id="app2">
+            <my-component></my-component>
+            <my-component></my-component>
+            <other-component></other-component> <!-- Not registering in #app2, only use in #app3 -->
+        </div>
+
+        <div id="app3">
+            <my-component></my-component>
+            <other-component></other-component>
+            <other-component></other-component>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

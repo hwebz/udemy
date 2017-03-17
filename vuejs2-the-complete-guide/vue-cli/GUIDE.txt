@@ -1,0 +1,4 @@
+npm install -g vue-cli
+vue init webpack-simple vuejs2-the-complete-guide\vue-cli
+npm install
+npm run dev
