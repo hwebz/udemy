@@ -1,0 +1,92 @@
+[{
+        "id": 1,
+        "type": "Condo",
+        "price": 220000,
+        "address": "213 Grove Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://www.kiawahisland.com/wp-content/uploads/img-sanctuary-400x250.jpg"
+    },
+    {
+        "id": 2,
+        "type": "House",
+        "price": 720000,
+        "address": "855 Wash Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://chrisvietorhometeam.com/wp-content/uploads/2016/09/xNewton-Best-Real-Estate-400x250.jpg.pagespeed.ic.5gEc83dL-e.jpg"
+    },
+    {
+        "id": 3,
+        "type": "Villa",
+        "price": 920000,
+        "address": "1015 Ladgastern Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "https://www.farinternational.com/wp-content/uploads/2017/03/Casa-Finca-Santa-Fe-de-Antioquia-1-400x250.jpg"
+    },
+    {
+        "id": 4,
+        "type": "Department",
+        "price": 320000,
+        "address": "213 Grove Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://www.satorealestate.com/wp-content/uploads/2016/12/Casa-Linda-Pool-400x250.jpg"
+    },
+    {
+        "id": 5,
+        "type": "Restaurant",
+        "price": 120000,
+        "address": "213 Grove Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://www.scottramsayimages.com/wp-content/uploads/Screen-Shot-2016-08-10-at-2.07.06-PM-400x250.png"
+    },
+    {
+        "id": 6,
+        "type": "Duplex",
+        "price": 620000,
+        "address": "213 Grove Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://ivanre.com/wp-content/uploads/2016/03/doulton-pl-doulton-place-doulton-estates-doulton-mississauga-doulton-real-estate-400x250.jpg"
+    },
+    {
+        "id": 7,
+        "type": "Carnavan",
+        "price": 820000,
+        "address": "213 Grove Street",
+        "description": "Excellent place, really nice view!",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "http://www.superiorrealestatenews.com/wp-content/uploads/2014/10/01-1899_Exterior_Front_Left_5TMDE_E_Print-400x250.jpg"
+    }
+]
