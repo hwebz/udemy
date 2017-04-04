@@ -1,0 +1,99 @@
+<section class="property-binding">
+    <!-- 1) -->
+    <article>
+        <h2>Interpolation</h2>
+        <p>Used with curly braces</p>
+        <div class="highlight">{{ interpolationString }}</div>
+    </article>
+
+    <!-- 1) -->
+    <article>
+        <h2>Property binding</h2>
+        <p>Used with squared brackets</p>
+        <div [ngClass]="'highlight'">Binding this image to source by using [src]="EXPRESSION"</div>
+        Change source here:
+        <input type="text" #imageSource value="https://angular.io/resources/images/logos/standard/shield-large.png" (keyup)="0" />
+        <br>
+        <img [src]="imageSource.value" />
+    </article>
+
+    <!-- 1) -->
+    <article>
+        <h2>Attribute binding (rarely used!)</h2>
+        <p>Very rare exception (e.g. colspan), most of the time use property binding!</p>
+        <div class="highlight">Syntax is [attr.ATTRIBUTE]="EXPRESSION"</div>
+    </article>
+
+    <!-- 2) -->
+    <article>
+        <h2>Class and Style binding</h2>
+        <div class="highlight">Syntax is [class.CSS-CLASSNAME]="EXPRESSION" (alternative: [ngClass]="{CSS-CLASSNAME: true/false, ...}" and [style.STYLENAME]="EXPRESSION".</div>
+        <div>
+            Choose class:
+            <select #class (change)="0">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+            <br>
+            <div class="{{class.value}}">This is text is colored appropriately.</div>
+            <span [class.red]="class.value == 'red'">Red chosen</span>
+            <span [class.green]="class.value == 'green'">Green chosen</span>
+            <span [class.blue]="class.value == 'blue'">Blue chosen</span>
+            <div [style.display]="class.value == 'blue' ? 'block' : 'none'">This text only appears if blue is chosen</div>
+        </div>
+    </article>
+</section>
+
+<section class="event-binding">
+    <!-- 3) -->
+    <article>
+        <h2>Event binding</h2>
+        <p>Expression is executed once the specified event occurs.</p>
+        <div class="highlight">Syntax is (event)="EXPRESSION".</div>
+        <div>
+            <button (click)="onClick()">Click me!</button>
+            <br>
+            <input type="text" (keyup)="onKeyup($event)" (keyup.enter)="onSave(input.value)" (blur)="onSave(input.value)" #input />
+            <div>Current content: {{currentContent}}</div>
+            <div>Last saved content: {{lastContent}}</div>
+            <br>
+            <span (mouseover)="onToggleHover()" (mouseout)="onToggleHover()" [class.highlight]="isMouseOver">Hover over me!</span>
+        </div>
+        <!-- There are also custom events and directive events (covered later in the course) -->
+    </article>
+</section>
+
+<section class="two-way-binding">
+    <!-- 4) -->
+    <article>
+        <h2>Two-Way Binding</h2>
+        <p>Not the default in Angular 2!</p>
+        <div class="highlight">Syntax is [(ngModel)]="EXPRESSION"</div>
+        <div>
+            My name is {{myself.name}} and I am {{myself.age}} years old.<br>
+            <input type="text" [(ngModel)]="myself.name" /><br>
+            <input type="text" [(ngModel)]="myself.age" /><br>
+        </div>
+    </article>
+</section>
+
+<section id="custom-property-binding">
+    <article>
+        <h2>Binding to custom properties (in other components)</h2>
+        <p>Allows us to pass data/values from one component to another.</p>
+        <input type="text" #name (keyup)="0" /><br>
+        <h4>CustomPropertyBindingComponent:</h4>
+        <h5>With and without using an alias:</h5>
+        <custom-property-binding [myName]="name.value" [name2]="name.value"></custom-property-binding>
+    </article>
+</section>
+
+<section id="custom-event-binding">
+    <article>
+        <h2>Binding to custom events (in other components)</h2>
+        <p>Allows us to receive data/values from child components.</p>
+        <div class="highlight">{{changed}}</div>
+        <custom-event-binding (click2)="onCustomClick($event)" (myClick)="onCustomClick($event)"></custom-event-binding>
+    </article>
+</section>
