@@ -1,5 +1,6 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { ListItem } from "./list-item";
+import { ShoppingListService } from "./services/shopping-list.service";
 
 @Component({
     selector: 'shopping-list-new-item',
@@ -24,7 +25,10 @@ export class ShoppingListNewItemComponent {
     };
     itemAdded = new EventEmitter<ListItem>();
 
+    constructor(private _shoppingListService: ShoppingListService) {}
+
     onClick() {
-        this.itemAdded.emit(this.item);
+        // this.itemAdded.emit(this.item);
+        this._shoppingListService.insertItem({name: this.item.name, amount: this.item.amount});
     }
 }

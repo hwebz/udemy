@@ -151,3 +151,17 @@ header {
         }
     }
 }
+
+form {
+    label,
+    input {
+        display: block;
+        margin: 10px;
+        &[type="submit"] {
+            padding: 10px;
+        }
+    }
+    input {
+        padding: 5px;
+    }
+}

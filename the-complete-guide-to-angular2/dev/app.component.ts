@@ -166,8 +166,7 @@ import {AttributeDirectives} from './attribute-directives.component';
 export class AppComponent {
 
 } */
-
-import { Component } from 'angular2/core';
+/* import { Component } from 'angular2/core';
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
 @Component({
@@ -185,4 +184,39 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
 export class AppComponent {
 
+} */
+
+/* import { Component } from 'angular2/core';
+import { Component1Component } from "./services/component1.component";
+import { Component2Component } from "./services/component2.component";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <h1>First component</h1>
+        <component-1></component-1>
+        <br>
+        <h1>Second component</h1>
+        <component-2></component-2>
+    `,
+    directives: [Component1Component, Component2Component]
+})
+
+export class AppComponent {
+    
+} */
+
+import { Component } from 'angular2/core';
+import { TemplateDrivenFormComponent } from "./forms/template-driven-form.component";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <my-template-driven></my-template-driven>
+    `,
+    directives: [TemplateDrivenFormComponent]
+})
+
+export class AppComponent {
+    
 }

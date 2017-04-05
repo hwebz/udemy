@@ -1,7 +1,8 @@
-import { Component } from 'angular2/core';
+import { Component, OnInit } from 'angular2/core';
 import { ShoppingListNewItemComponent } from "./shopping-list-new-item.component";
 import { ListItem } from "./list-item";
 import { ShoppingListItemComponent } from "./shoping-list-item.component";
+import { ShoppingListService } from "./services/shopping-list.service";
 
 @Component({
     selector: 'my-shopping-list',
@@ -22,12 +23,16 @@ import { ShoppingListItemComponent } from "./shoping-list-item.component";
             <shopping-list-item [selectedItem]="selectedItem" (itemDeleted)="onItemDeleted($event)"></shopping-list-item>
         </section>
     `,
-    directives: [ShoppingListNewItemComponent, ShoppingListItemComponent]
+    directives: [ShoppingListNewItemComponent, ShoppingListItemComponent],
+    providers: [ShoppingListService]
 })
 
-export class ShoppingListComponent {
-    listItems = new Array<ListItem>();
+export class ShoppingListComponent implements OnInit {
+    // listItems = new Array<ListItem>();
+    listItems: Array<ListItem>;
     selectedItem: ListItem;
+
+    constructor(private _shoppingListService: ShoppingListService) {}
 
     onItemAdded(item: ListItem) {
         this.listItems.push({name: item.name, amount: item.amount});
@@ -38,8 +43,13 @@ export class ShoppingListComponent {
         this.selectedItem = item; // reference to one object - two-way binding
     }
 
-    onItemDeleted(item: ListItem) {
-        this.listItems.splice(this.listItems.indexOf(item), 1);
+    onItemDeleted() {
+    // onItemDeleted(item: ListItem) {
+        // this.listItems.splice(this.listItems.indexOf(item), 1);
         this.selectedItem = null;
+    }
+
+    ngOnInit() {
+        this.listItems = this._shoppingListService.getItems();
     }
 }
