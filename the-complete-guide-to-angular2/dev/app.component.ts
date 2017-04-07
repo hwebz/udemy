@@ -166,6 +166,7 @@ import {AttributeDirectives} from './attribute-directives.component';
 export class AppComponent {
 
 } */
+
 /* import { Component } from 'angular2/core';
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
@@ -206,7 +207,7 @@ export class AppComponent {
     
 } */
 
-import { Component } from 'angular2/core';
+/* import { Component } from 'angular2/core';
 import { TemplateDrivenFormComponent } from "./forms/template-driven-form.component";
 
 @Component({
@@ -219,4 +220,162 @@ import { TemplateDrivenFormComponent } from "./forms/template-driven-form.compon
 
 export class AppComponent {
     
+} */
+
+/* import { Component } from 'angular2/core';
+import { DataDrivenFormComponent } from "./forms/data-driven-form.component";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <my-data-driven></my-data-driven>
+    `,
+    directives: [DataDrivenFormComponent]
+})
+
+export class AppComponent {
+    
+}*/
+
+// Pipes
+/*import { Component } from 'angular2/core';
+import { ReversePipe } from "./pipes/reverse.pipe";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <section class="container">
+            <h2>The Date Pipe</h2>
+            <!-- Prepare document with different values which can be used to configure output (for all pipes!) -->
+            <p>Today is: {{today | date: 'short'}}</p>
+            <p>Today is: {{today | date }}</p>
+            <p>Today is: {{today | date: 'longDate' }}</p>
+            <p>Today is: {{today | date: 'ymd' }}</p>
+        </section>
+
+        <section class="container">
+            <h2>The lowercase and UPPERCASE Pipe</h2>
+            <input type="text" #inputCasePipes (keyup)="0" value="First value"><br>
+            <div>Output Lowercase: {{ inputCasePipes.value | lowercase }}</div>
+            <div>Output Uppercase: {{ inputCasePipes.value | uppercase }}</div>
+        </section>
+
+        <section class="container">
+            <h2>The Slice Pipe</h2>
+            <input type="text" #inputSlicePipe (keyup)="0" value="First value"> - from <input type="text" #start (keyup)="0" value="1"> to <input type="text" #end (keyup)="0" value="3"><br>
+            <div>Output: {{ inputSlicePipe.value | slice:start.value:end.value }}</div>
+        </section>
+
+        <section class="container">
+            <h2>Number Pipes</h2>
+            <input type="text" #inputNumberPipes (keyup)="0" value="32000"> - currency: <input type="text" #currency value="EUR" (keyup)="0"><br>
+            <div>Decimal: {{ 1.0 * inputNumberPipes.value | number:'1.1-2' }}</div>
+            <div>Currency: {{ 1.0 * inputNumberPipes.value | currency:currency.value:currencyShort.checked:'1.2-2' }}</div>
+            <input type="checkbox" #currencyShort checked (change)="0"> Short currency code
+        </section>
+
+        <section class="container">
+            <h2>Chaining multiple Pipes (e.g. uppercase and slice)</h2>
+            <input type="text" #inputChainPipes (keyup)="0"><br>
+            <div>Output: {{ inputChainPipes.value | slice:1:3 | uppercase }}</div>
+        </section>
+
+        <section class="container">
+            <h2>Custom Pipe (reverse string)</h2>
+            <input type="text" #inputCustomPipe (keyup)="0"><br>
+            <div>Output: {{ inputCustomPipe.value | myReverse }}</div>
+        </section>
+
+        <section class="container">
+            <h2>Async (stateful) pipes</h2>
+            <div>Output (received after 2s): {{ stateFulPipeOutput | async }}</div>
+        </section>
+    `,
+    pipes: [ReversePipe]
+})
+
+export class AppComponent {
+    today = new Date();
+
+    stateFulPipeOutput = new Promise((resolve, reject) => {
+        setTimeout(() => resolve('Data is there!'), 2000);
+    });
+} */
+
+// Routers
+/* import { Component } from 'angular2/core';
+import { ROUTER_DIRECTIVES, RouteConfig } from "angular2/router";
+import { Component1Component } from "./routers/component1.component";
+import { Component2Component } from "./routers/component2.component";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <header>
+            <ul>
+                <li><a [routerLink]="['Component1', {source: 'AppComponent'}]">Component 1</a></li>
+                <li><a [routerLink]="['Component2']">Component 2</a></li>
+            </ul>
+        </header>
+        <router-outlet></router-outlet>
+    `,
+    directives: [ROUTER_DIRECTIVES]
+})
+
+@RouteConfig([
+    {
+        path: '/component-1/:source/...', name: 'Component1', component: Component1Component
+    },
+    {
+        path: '/component-2', name: 'Component2', component: Component2Component, useAsDefault: true
+    }
+])
+
+export class AppComponent {
+
+} */
+
+import { Component } from 'angular2/core';
+import { HttpService } from "./http/http.service";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <div>
+            <div class="input">
+                <label for="title">Title</label>
+                <input type="text" id="title" #title>
+            </div>
+            <div class="input">
+                <label for="body">Body</label>
+                <input type="text" id="body" #body>
+            </div>
+            <div class="input">
+                <label for="user-id">User ID</label>
+                <input type="text" id="user-id" #userId>
+            </div>
+            <button (click)="onPost(title.value, body.value, userId.value)">Post Data</button>
+            <button (click)="onGetPosts()">Get all Posts</button>
+            <p>Response: {{response | json}}</p>
+        </div>
+    `,
+    providers: [HttpService]
+})
+
+export class AppComponent {
+    response: string;
+    
+    constructor(private _httpService: HttpService) {}
+
+    onGetPosts() {
+        this._httpService.getPosts()
+            .subscribe(res => this.response = res,
+                        error => console.log(error));
+    }
+
+    onPost(title: string, body: string, userId: string) {
+        this._httpService.createPost({title: title, body: body, userId: userId})
+                .subscribe(res => this.response = res,
+                error => console.log(error));
+    }
 }

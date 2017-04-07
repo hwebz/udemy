@@ -109,6 +109,27 @@ header {
     .brand {
         font-weight: bold;
     }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        li {
+            display: inline-block;
+            margin: 0 5px;
+            a {
+                color: white;
+                display: block;
+                padding: 10px 15px;
+                border: 1px solid white;
+                border-radius: 5px;
+                text-decoration: none;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                }
+            }
+        }
+    }
 }
 
 .main {
@@ -164,4 +185,8 @@ form {
     input {
         padding: 5px;
     }
+}
+
+.validation-error {
+    @extend .red;
 }
