@@ -335,7 +335,7 @@ export class AppComponent {
 
 } */
 
-import { Component } from 'angular2/core';
+/* import { Component } from 'angular2/core';
 import { HttpService } from "./http/http.service";
 
 @Component({
@@ -378,4 +378,41 @@ export class AppComponent {
                 .subscribe(res => this.response = res,
                 error => console.log(error));
     }
+}*/
+
+// Extra project
+import { Component } from 'angular2/core'
+import { RecipesComponent } from "./recipe/recipe-book/recipes.component";
+import { RouteConfig, ROUTER_DIRECTIVES } from "angular2/router";
+import { ShoppingListComponent } from "./recipe/shopping-list/shopping-list.component";
+
+@Component({
+    selector: 'my-app',
+    template: `
+        <header>
+            <div class="brand center">Recipes Book</div>
+            <br>
+            <ul>
+                <li><a [routerLink]="['ShoppingList']">Shopping List</a></li>
+                <li><a [routerLink]="['Recipes']">Recipes</a></li>
+            </ul>
+        </header>
+        <div class="main">
+            <router-outlet></router-outlet>
+        </div>
+    `,        
+    directives: [ROUTER_DIRECTIVES]
+})
+
+@RouteConfig([
+    {
+        path: '/recipes/...', name: 'Recipes', component: RecipesComponent, useAsDefault: true
+    },
+    {
+        path: '/shopping-list', name: 'ShoppingList', component: ShoppingListComponent
+    }
+])
+
+export class AppComponent {
+
 }

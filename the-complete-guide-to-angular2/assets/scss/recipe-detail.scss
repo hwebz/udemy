@@ -1,0 +1,27 @@
+.info {}
+
+.recipe {
+    .img,
+    .content {
+        margin: 15px 0;
+    }
+    a {
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #424242;
+        background-color: #fff;
+        &.danger {
+            background-color: #ff6464;
+            color: #fff;
+            border-color: #fdc0c0;
+        }
+    }
+    ul {
+        li {
+            line-height: 1.5;
+        }
+    }
+}
